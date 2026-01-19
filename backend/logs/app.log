@@ -1,2 +1,40 @@
 2026-01-19 16:24:56,528 INFO Root endpoint accessed
 2026-01-19 16:47:55,849 INFO Database initialized
+2026-01-19 18:31:46,329 INFO Database initialized
+2026-01-19 18:33:53,674 WARNING (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\vikra\backend-intern-assignment\backend\venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-19 18:47:05,825 INFO Database initialized
+2026-01-19 18:47:33,005 WARNING (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\vikra\backend-intern-assignment\backend\venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-19 20:59:05,065 INFO Database initialized
+2026-01-19 21:01:04,824 WARNING (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\vikra\backend-intern-assignment\backend\venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-19 21:03:57,597 INFO Database initialized
+2026-01-19 21:04:40,174 WARNING (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\vikra\backend-intern-assignment\backend\venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-19 21:06:23,805 INFO Database initialized
+2026-01-19 21:06:26,713 INFO Database initialized
+2026-01-19 21:06:54,647 INFO Database initialized
+2026-01-19 21:06:57,584 INFO Database initialized
+2026-01-19 21:07:00,492 INFO Database initialized
+2026-01-19 21:07:26,305 INFO Database initialized
+2026-01-19 21:07:51,728 WARNING (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\vikra\backend-intern-assignment\backend\venv\lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-01-19 21:13:21,173 INFO Database initialized
+2026-01-19 21:13:24,213 INFO Database initialized
+2026-01-19 21:15:56,324 INFO Database initialized
