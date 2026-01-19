@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from dotenv import load_dotenv
 import logging
 
+from app.db.init_db import init_db
+
 load_dotenv()
 
 app = FastAPI(
@@ -9,12 +11,16 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Logging setup
 logging.basicConfig(
     filename="logs/app.log",
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(message)s"
 )
+
+@app.on_event("startup")
+def on_startup():
+    init_db()
+    logging.info("Database initialized")
 
 @app.get("/")
 def root():
