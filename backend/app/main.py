@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import auth, tasks
+from app.api import auth, tasks, users
 from app.db.base import Base
 from app.db.session import engine
 
@@ -21,6 +21,12 @@ app.add_middleware(
 # API Versioning Logic
 app.include_router(auth.router, prefix="/api/v1")
 app.include_router(tasks.router, prefix="/api/v1")
+app.include_router(users.router, prefix="/api/v1")
+
+@app.get("/")
+def health_check():
+    return {"status": "active", "version": "v1.0.0"}
+
 
 @app.get("/")
 def health_check():

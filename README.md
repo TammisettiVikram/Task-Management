@@ -1,61 +1,67 @@
-# Secure Scalable Task Management System
-
-This project is a full-stack application built as part of the **Backend Developer Intern Assignment**.  
-It demonstrates the design and implementation of a **secure, scalable REST API** with **authentication, role-based access control**, and a **basic frontend UI** for interacting with the APIs.
-
-The backend is the primary focus, while the frontend is intentionally kept simple to validate API functionality.
+# Backend Developer Intern Assignment  
+**Scalable REST API with Authentication & Role-Based Access**
 
 ---
 
-## Features
+## 📌 Project Overview
 
-### Backend (Primary Focus)
-- **User Authentication**
-  - User registration and login
-  - Password hashing using Bcrypt
-  - JWT-based authentication
-- **Role-Based Access Control (RBAC)**
-  - USER and ADMIN roles
-  - Restricted admin-only endpoints
-- **CRUD Operations**
-  - Full CRUD (Create, Read, Update, Delete) for Tasks
-- **API Versioning**
-  - All APIs are versioned under `/api/v1/`
-- **Validation & Error Handling**
-  - Input validation using Pydantic
-  - Proper HTTP status codes (400, 401, 403, 404)
-- **Database**
-  - PostgreSQL with SQLAlchemy ORM
-- **API Documentation**
-  - Swagger UI available at `/docs`
+This project implements a **secure, scalable REST API** with **JWT-based authentication**, **role-based access control**, and **CRUD operations** on a secondary entity (**Tasks**).  
+A **basic but functional React frontend** is included to demonstrate and interact with the APIs.
+
+The project follows **industry best practices** in backend architecture, security, and API design, and is suitable for real-world extension.
 
 ---
 
-### Frontend (Supportive)
-- Built using **React.js**
-- Provides a simple UI to:
-  - Register and log in users
-  - Access a protected dashboard (JWT required)
-  - Perform full CRUD actions on tasks
-  - Display success and error messages from API responses
-
----
-
-## Tech Stack
+## 🛠 Tech Stack
 
 ### Backend
 - Python
 - FastAPI
-- PostgreSQL
 - SQLAlchemy
-- Pydantic
-- Passlib (Bcrypt)
-- Python-Jose (JWT)
+- PostgreSQL
+- JWT Authentication (python-jose)
+- bcrypt (password hashing)
 
 ### Frontend
-- React.js
+- React 19
+- React Router v7
 - Axios
-- CSS
+- Tailwind CSS
+
+---
+
+## ✅ Core Features Implemented
+
+### Backend (Primary Focus)
+
+- User registration & login with hashed passwords
+- JWT authentication & authorization
+- Role-based access control (user / admin)
+- CRUD APIs for Tasks
+- API versioning (`/api/v1`)
+- Centralized error handling & validation
+- Swagger API documentation
+- PostgreSQL database integration
+
+---
+
+### Frontend (Supportive)
+
+- Login & registration pages
+- Protected dashboard (JWT required)
+- Create, read, update, delete tasks
+- API error & success handling
+- Responsive UI with Tailwind CSS
+
+---
+
+### Security & Scalability
+
+- Secure password hashing (bcrypt)
+- JWT-based authentication
+- Protected routes with dependency injection
+- Modular, scalable project structure
+- Easily extendable to Redis, Docker, or microservices
 
 ---
 
@@ -67,6 +73,19 @@ The backend is the primary focus, while the frontend is intentionally kept simpl
 - `hashed_password`
 - `role` (USER / ADMIN)
 - `created_at`
+
+---
+
+### Admin Access
+- at directory \backend
+- python make_admin.py user@example.com
+(or)
+- By visiting
+http://localhost:8000/docs
+- And clicking Authorize
+Giving credentials of a user to make that user as an admin
+
+---
 
 ### Tasks
 - `id` (UUID, Primary Key)
@@ -88,13 +107,11 @@ The backend is the primary focus, while the frontend is intentionally kept simpl
 ---
 
 ### Backend Setup
+
 ```bash
 cd backend
 python -m venv venv
 venv\Scripts\activate   # Windows
-# or
-source venv/bin/activate   # macOS/Linux
-
 pip install -r requirements.txt
 
 ### Create .env file
@@ -104,7 +121,7 @@ ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 ### Run the backend:
-uvicorn app.main:app --reload
+python -m uvicorn app.main:app --reload
 
 ### Swagger documentation:
 http://localhost:8000/docs
@@ -117,16 +134,29 @@ npm start
 ### Frontend runs at:
 http://localhost:3000
 
+### API Endpoints
+Authentication
+- POST /api/v1/auth/register – Register new user
+- POST /api/v1/auth/login – Login and receive JWT
+
+Users
+- GET /api/v1/users/me – Get current user
+- GET /api/v1/users/ – List all users (admin only)
+
+Tasks
+- POST /api/v1/tasks – Create task
+- GET /api/v1/tasks – Get user tasks
+- PUT /api/v1/tasks/{id} – Update task
+- DELETE /api/v1/tasks/{id} – Delete task
+
 ### Application log files are included in the repository under:
-backend/logs/
+backend/logs/app.log
 
 ### Logs capture:
-- Application startup
-- Authentication events
-- Authorization failures
-- CRUD operations
-- Error handling
-- No sensitive information (passwords or tokens) is logged.
+- Database initialization
+- Authentication attempts
+- Warnings and errors
+- Health checks
 
 ### Scalability Notes
 - Stateless Authentication: JWT-based auth enables horizontal scaling behind   load balancers.

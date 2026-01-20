@@ -5,7 +5,7 @@ from jose import jwt, JWTError
 import os
 from app.db.session import SessionLocal
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 
 def get_db() -> Generator:
     db = SessionLocal()

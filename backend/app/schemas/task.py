@@ -9,7 +9,6 @@ class TaskBase(BaseModel):
 class TaskCreate(TaskBase):
     pass
 
-# New Schema for Updates
 class TaskUpdate(BaseModel):
     title: Optional[str] = Field(None, min_length=1, max_length=100)
     description: Optional[str] = Field(None, max_length=500)
