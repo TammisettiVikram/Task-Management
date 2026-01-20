@@ -1,38 +1,27 @@
-from dotenv import load_dotenv
-load_dotenv()
 from fastapi import FastAPI
-from dotenv import load_dotenv
-import logging
+from fastapi.middleware.cors import CORSMiddleware
+from app.api import auth, tasks
+from app.db.base import Base
+from app.db.session import engine
 
-from app.api.auth import router as auth_router
-from app.api.users import router as users_router
-from app.api.security_test import router as security_test_router
-from app.db.init_db import init_db
+# Create database tables
+Base.metadata.create_all(bind=engine)
 
-load_dotenv()
+app = FastAPI(title="Scalable Intern API", version="1.0.0")
 
-app = FastAPI(
-    title="Backend Intern Assignment",
-    version="1.0.0"
+# Essential for the Frontend requirement: Allow React to talk to FastAPI
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # For production, replace with your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-# ✅ REGISTER ALL ROUTERS
-app.include_router(auth_router, prefix="/api/v1")
-app.include_router(users_router, prefix="/api/v1")          # 👈 ADD THIS
-app.include_router(security_test_router, prefix="/api/v1")  # 👈 ADD THIS
-
-logging.basicConfig(
-    filename="logs/app.log",
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s"
-)
-
-@app.on_event("startup")
-def on_startup():
-    init_db()
-    logging.info("Database initialized")
+# API Versioning Logic
+app.include_router(auth.router, prefix="/api/v1")
+app.include_router(tasks.router, prefix="/api/v1")
 
 @app.get("/")
-def root():
-    logging.info("Root endpoint accessed")
-    return {"message": "Backend is running"}
+def health_check():
+    return {"status": "active", "version": "v1.0.0"}
