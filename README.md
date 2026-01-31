@@ -119,7 +119,7 @@ pip install -r requirements.txt
 
 ### Create .env file
 
-DATABASE_URL=postgresql://<username>:<password>@localhost:5432/intern_assignment
+DATABASE_URL=postgresql://<username>:<password>@localhost:5432/task-management
 SECRET_KEY=your_secret_key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
