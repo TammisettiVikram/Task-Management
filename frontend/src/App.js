@@ -3,18 +3,21 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
-import AdminDashboard from "./pages/AdminDashboard"; // make sure this exists
-
-const token = localStorage.getItem("token");
-const user = token ? jwtDecode(token) : null;
-const isAdmin = user?.role === "admin";
+import AdminDashboard from "./pages/AdminDashboard"; // ensure this file exists
 
 export default function App() {
     const navigate = useNavigate();
 
+    // Get token from localStorage
+    const token = localStorage.getItem("token");
+    const user = token ? jwtDecode(token) : null;
+
+    // Check if user is admin
+    const isAdmin = user && user.role === "admin";
+
     return (
         <div>
-            {/* Conditionally render Admin Panel button */}
+            {/* Show Admin Panel button only if user is admin */}
             {isAdmin && (
                 <button
                     onClick={() => navigate("/admin")}
@@ -28,6 +31,7 @@ export default function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                {/* Admin route only available to admins */}
                 {isAdmin && <Route path="/admin" element={<AdminDashboard />} />}
             </Routes>
         </div>
