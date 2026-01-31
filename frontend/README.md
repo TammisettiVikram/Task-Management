@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Task Management Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the **frontend application** for the Backend Developer Intern Assignment.  
+It provides a simple, clean UI to interact with the FastAPI backend using JWT authentication.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🧩 Project Overview
 
-### `npm start`
+The frontend allows users to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Register a new account
+- Log in securely
+- Access a protected dashboard
+- Create, view, update, and delete tasks
+- Log out safely
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+It communicates with a REST API built using **FastAPI** and deployed on **Render**.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Tech Stack
 
-### `npm run build`
+- React 19
+- React Router v7
+- Axios
+- Tailwind CSS
+- Create React App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🌐 Backend Integration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The frontend consumes APIs from the deployed backend:
 
-### `npm run eject`
+**Backend Base URL (Render):**
+https://task-management-gpck.onrender.com/api/v1
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Authentication is handled using **JWT**, which is stored in `localStorage` and automatically attached to API requests using an Axios interceptor.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📄 Pages
 
-## Learn More
+| Route | Description |
+|-----|-------------|
+| `/` | Login page |
+| `/register` | User registration |
+| `/dashboard` | Protected task dashboard |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Running Locally
 
-### Code Splitting
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Install dependencies
+```bash
+npm install
+```
+### Start development server
+```bash
+npm start
+```
+### 🚀 Run the App
+Open your browser and go to:
+```text
+http://localhost:3000
+```
+---
 
-### Analyzing the Bundle Size
+# 🔐 Authentication Flow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- User logs in with email & password
+- Backend returns a JWT access token
+- Token is stored in localStorage
+- Axios interceptor attaches token to all protected API requests
+- Unauthorized users are redirected to login
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# 🧪 Features Demonstrated
 
-### Advanced Configuration
+- Secure authentication flow
+- Protected routes
+- REST API integration
+- Error handling for failed requests
+- Clean UI with Tailwind CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+# ☁ Deployment
+## Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Platform: Vercel
+- Framework: Create React App
+- Routing handled using rewrites
 
-### `npm run build` fails to minify
+## Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Platform: Render
+- API Docs:
+https://task-management-gpck.onrender.com/docs
+
+---
+
+# 📌 Notes
+
+- Backend must be running for full functionality
+- Free Render tier may sleep after inactivity
+- First request may take ~30 seconds
+
+---
+
+# 👨‍💻 Author
+
+- Tammisetti Vikram
+- Backend Developer

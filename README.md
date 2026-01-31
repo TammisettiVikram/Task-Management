@@ -112,7 +112,8 @@ Giving credentials of a user to make that user as an admin (usually access token
 cd backend
 python -m venv venv
 venv\Scripts\activate   # Windows
-pip install -r requirements.txt
+pip install -r requirements.txt 
+```
 
 ---
 
@@ -202,3 +203,10 @@ backend/logs/app.log
 
 ### Conclusion
 This project fulfills all the requirements of the Backend Developer Intern assignment by focusing on secure API design, clean architecture, and scalability, while providing a minimal frontend to demonstrate functionality.
+
+---
+
+# 👨‍💻 Author
+
+- Tammisetti Vikram
+- Backend Developer
